@@ -21,15 +21,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class DashboardController extends CI_Controller
 {
 
-  public function __construct()
-  {
-    parent::__construct();
-  }
+	public function __construct()
+	{
+		parent::__construct();
+		check_logged_in();
+		check_role(['superadmin', 'manager_outlet']);
+	}
 
-  public function index()
-  {
-    echo "It works!";
-  }
+	public function index()
+	{
+		$this->load->view('dashboard/layouts/index', [
+			'page_title' => 'Dashboard',
+			'section_title' => 'Dashboard',
+			'current_user' => (object) current_user(),
+			'content' => 'dashboard/index',
+		]);
+	}
 }
 
 
