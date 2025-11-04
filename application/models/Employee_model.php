@@ -29,11 +29,12 @@ class Employee_model extends CI_Model
 
 	public function get_all_employee($filters = [])
 	{
-		$this->db->select('e.*, p.position_name, d.division_name, u.unit_name');
+		$this->db->select('e.*, p.position_name, d.division_name, u.unit_name, usr.role_id');
 		$this->db->from("$this->table e");
 		$this->db->join('positions p', 'p.id = e.position_id', 'left');
 		$this->db->join('divisions d', 'd.id = e.division_id', 'left');
 		$this->db->join('units u', 'u.id = e.unit_id', 'left');
+		$this->db->join('users usr', 'usr.employee_id = e.id', 'left');
 
 		if (!empty($filters)) {
 			$this->db->where($filters);
@@ -41,6 +42,27 @@ class Employee_model extends CI_Model
 
 		$this->db->order_by('e.id', 'DESC');
 		return $this->db->get()->result();
+	}
+
+	public function getEmployeeDetail($id)
+	{
+		return $this->db->select('e.*, 
+            u.unit_name, 
+            p.position_name, 
+            d.division_name, 
+            s.status_name, 
+            r.religion_name, 
+            ed.education_level')
+			->from('employees e')
+			->join('units u', 'u.id = e.unit_id', 'left')
+			->join('positions p', 'p.id = e.position_id', 'left')
+			->join('divisions d', 'd.id = e.division_id', 'left')
+			->join('status_types s', 's.id = e.status_id', 'left')
+			->join('religions r', 'r.id = e.religion_id', 'left')
+			->join('educations ed', 'ed.id = e.education_id', 'left')
+			->where('e.id', $id)
+			->get()
+			->row();
 	}
 
 	public function insert($data)
@@ -52,29 +74,33 @@ class Employee_model extends CI_Model
 		return $this->db->insert_id();
 	}
 
-	public function getUnits()
+	public function check_nip_exists($nip, $id)
 	{
-		return $this->db->get('units')->result();
+		$this->db->where('nip', $nip);
+		$this->db->where('id !=', $id);
+		return $this->db->get('employees')->num_rows() > 0;
 	}
 
-	public function getPositions()
+	public function check_email_exists($email, $id)
 	{
-		return $this->db->get('positions')->result();
+		$this->db->where('email', $email);
+		$this->db->where('id !=', $id);
+		return $this->db->get('employees')->num_rows() > 0;
 	}
 
-	public function getDivisions()
+	function get_by_id($id)
 	{
-		return $this->db->get('divisions')->result();
+		return $this->db->get_where('employees', ['id' => $id])->row();
 	}
 
-	public function getEducations()
+	function update($id, $data)
 	{
-		return $this->db->get('educations')->result();
+		return $this->db->where('id', $id)->update('employees', $data);
 	}
 
-	public function getReligions()
+	public function delete($id)
 	{
-		return $this->db->get('religions')->result();
+		return $this->db->where('id', $id)->delete('employees');
 	}
 
 	// ------------------------------------------------------------------------

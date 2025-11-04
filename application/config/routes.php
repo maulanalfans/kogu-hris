@@ -58,6 +58,9 @@ $route['dashboard'] = 'DashboardController/index';
 $route['karyawan'] = 'EmployeeController/index';
 $route['karyawan/create'] = 'EmployeeController/create';
 $route['karyawan/form/create'] = 'EmployeeController/form_create';
+$route['karyawan/(:num)'] = 'EmployeeController/view/$1';
+$route['karyawan/update/(:num)'] = 'EmployeeController/update/$1';
+$route['karyawan/delete/(:num)'] = 'EmployeeController/delete/$1';
 
 $route['login'] = 'LoginController/index';
 $route['logout'] = 'LoginController/logout';

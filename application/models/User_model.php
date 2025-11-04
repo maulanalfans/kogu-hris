@@ -45,9 +45,24 @@ class User_model extends CI_Model
 		return $this->db->insert_id();
 	}
 
-	public function getRoles()
+	public function update($id, $data)
 	{
-		return $this->db->get('roles')->result();
+		return $this->db->where('id', $id)->update($this->table, $data);
+	}
+
+	public function get_users_role($id)
+	{
+		return $this->db->where('employee_id', $id)->get('users')->row();
+	}
+
+	public function get_by_employee($employee_id)
+	{
+		return $this->db->where('employee_id', $employee_id)->get('users')->row();
+	}
+
+	public function delete_by_employee_id($employee_id)
+	{
+		return $this->db->where('employee_id', $employee_id)->delete('users');
 	}
 }
 

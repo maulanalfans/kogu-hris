@@ -15,14 +15,14 @@
                     if (isset($menu['has_child']) && $menu['has_child'] == TRUE) {
                 ?>
                      <li class="collapsed">
-                         <a class="m-link" data-bs-toggle="collapse" data-bs-target="#<?= $menu['menu'] ?>-Components" href="<?= $menu['url'] ?>">
+                         <a class="m-link" data-bs-toggle="collapse" data-bs-target="#<?= $menu['menu'] ?>-Components" href="<?= base_url($menu['url']) ?>">
                              <i class="<?= $menu['icon'] ?>"></i> <span><?= $menu['menu'] ?></span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                          <!-- Menu: Sub menu ul -->
                          <ul class="sub-menu collapse show" id="<?= $menu['menu'] ?>-Components">
                              <?php
                                 foreach ($menu['childMenu'] as $child) {
                                 ?>
-                                 <li><a class="ms-link <?= menuActive($child['url'], $this->uri->segment(1)) ?>" href="<?= $child['url'] ?>"> <span><?= $child['childMenu'] ?></span></a></li>
+                                 <li><a class="ms-link <?= menuActive($child['url'], $this->uri->segment(1)) ?>" href="<?= base_url($child['url']) ?>"> <span><?= $child['childMenu'] ?></span></a></li>
                              <?php
                                 }
                                 ?>
@@ -31,7 +31,7 @@
                  <?php
                     } else {
                     ?>
-                     <li><a class="m-link" href="<?= $menu['url'] ?>"><i class="<?= $menu['icon'] ?>"></i> <span><?= $menu['menu'] ?></span></a></li>
+                     <li><a class="m-link" href="<?= base_url($menu['url']) ?>"><i class="<?= $menu['icon'] ?>"></i> <span><?= $menu['menu'] ?></span></a></li>
              <?php
                     }
                 }

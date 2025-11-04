@@ -159,6 +159,38 @@ if (!function_exists('indonesianDate')) {
 	}
 }
 
+if (!function_exists('generate_breadcrumb')) {
+	function generate_breadcrumb()
+	{
+		$CI = &get_instance();
+		$total_segments = $CI->uri->total_segments();
+		$breadcrumb = '<nav aria-label="breadcrumb"><ol class="breadcrumb p-2">';
+
+		// Home link
+		$breadcrumb .= '<li class="breadcrumb-item"><a href="#">Home</a></li>';
+
+		$link = '';
+
+		for ($i = 1; $i <= $total_segments; $i++) {
+			$segment = $CI->uri->segment($i);
+			$link .= $segment . '/';
+
+			// Jika ini adalah segment terakhir → aktif
+			if ($i == $total_segments) {
+				$breadcrumb .= '<li class="breadcrumb-item active" aria-current="page"> <i>'
+					. ucfirst(str_replace('-', ' ', $segment)) . '</i></li>';
+			} else {
+				$breadcrumb .= '<li class="breadcrumb-item"><a href="#">'
+					. ucfirst(str_replace('-', ' ', $segment)) . '</a></li>';
+			}
+		}
+
+		$breadcrumb .= '</ol></nav>';
+
+		return $breadcrumb;
+	}
+}
+
 
 // ------------------------------------------------------------------------
 
