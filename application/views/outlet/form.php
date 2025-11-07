@@ -31,8 +31,8 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success">Simpan</button>
-            <a href="<?= base_url('outlet') ?>" class="btn btn-secondary">Kembali</a>
+            <button type="submit" class="btn btn-success lift">Simpan</button>
+            <a href="<?= base_url('outlet') ?>" class="btn btn-secondary lift">Kembali</a>
             <?= form_close() ?>
         </div>
     </div>

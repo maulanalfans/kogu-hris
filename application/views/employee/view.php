@@ -4,14 +4,14 @@
 
         <!-- Tombol Aksi -->
         <div class="row mt-4 mb-4">
-            <div class="col-md-6"><a href="<?= base_url('karyawan') ?>" class="btn btn-secondary btn-sm">
+            <div class="col-md-6"><a href="<?= base_url('karyawan') ?>" class="btn btn-secondary btn-sm lift">
                     <i class="icofont-arrow-left"></i> Kembali
                 </a></div>
             <div class="col-md-6 text-end">
-                <a href="<?= base_url('karyawan/update/' . $employee_data->id) ?>" class="btn btn-warning btn-sm">
+                <a href="<?= base_url('karyawan/update/' . $employee_data->id) ?>" class="btn btn-warning btn-sm lift">
                     <i class="icofont-pencil-alt-3"></i> Update
                 </a>
-                <a href="<?= base_url('karyawan/delete/' . $employee_data->id) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data karyawan ini? Data yang dihapus tidak dapat dikembalikan.');">
+                <a href="<?= base_url('karyawan/delete/' . $employee_data->id) ?>" class="btn btn-danger btn-sm lift" onclick="return confirm('Yakin ingin menghapus data karyawan ini? Data yang dihapus tidak dapat dikembalikan.');">
                     <i class="icofont-trash"></i> Delete
                 </a>
             </div>

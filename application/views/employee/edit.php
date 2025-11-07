@@ -11,7 +11,7 @@
                 <?php if (validation_errors()) : ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Oops!</strong> Terjadi kesalahan pada update data.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close lift" data-bs-dismiss="alert" aria-label="Close"></button>
                         <div class="mt-2">
                             <?= validation_errors('<div class="text-danger small">', '</div>'); ?>
                         </div>
@@ -199,8 +199,8 @@
                 </div>
 
                 <div class="mt-4">
-                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
-                    <a href="<?= base_url('karyawan') ?>" class="btn btn-secondary btn-sm">Batal</a>
+                    <button type="submit" class="btn btn-primary btn-sm lift">Update</button>
+                    <a href="<?= base_url('karyawan') ?>" class="btn btn-secondary btn-sm lift">Batal</a>
                 </div>
 
                 <?= form_close(); ?>

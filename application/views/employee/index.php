@@ -5,8 +5,8 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="card-title mb-0"><?= $page_title ?></h5>
                 <div class="col-auto d-flex w-sm-100">
-                    <a type="button" class="btn light-success-bg btn-sm" data-bs-toggle="modal" data-bs-target="#importKaryawanModal"> <i class="icofont-file-excel me-2 fs-6"></i>Import Excel</a> &nbsp;
-                    <a href="karyawan/form/create" type="button" class="btn btn-dark btn-sm"><i class="icofont-plus-circle me-2 fs-6"></i>Tambah Karyawan</a>
+                    <a type="button" class="btn light-success-bg btn-sm lift" data-bs-toggle="modal" data-bs-target="#importKaryawanModal"> <i class="icofont-file-excel me-2 fs-6"></i>Import Excel</a> &nbsp;
+                    <a href="karyawan/form/create" type="button" class="btn btn-dark btn-sm lift"><i class="icofont-plus-circle me-2 fs-6"></i>Tambah Karyawan</a>
                 </div>
             </div>
             <div class="card-body">
@@ -57,7 +57,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLiveLabel">Import Data Karyawan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close lift" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>Download template <a href="#" style="color: goldenrod;"> disini </a> </p>
@@ -67,8 +67,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary btn-sm">Import</button>
+                <button type="button" class="btn btn-secondary btn-sm lift" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btn-sm lift">Import</button>
             </div>
             <?= form_close(); ?>
         </div>

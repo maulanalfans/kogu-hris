@@ -55,6 +55,9 @@
 									</div>
 								</div>
 
+								<input type="hidden" name="latitue" value="">
+								<input type="hidden" name="longitude" value="">
+
 								<div class="col-12 mt-2 mb-2">
 									<button type="submit" class="btn btn-md btn-block btn-light lift">Masuk</button>
 								</div>
@@ -79,6 +82,37 @@
 	<script src="<?= base_url('assets/bundles/libscripts.bundle.js') ?>"></script>
 	<script>
 		$(document).ready(function() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(
+					function(position) {
+						$('#latitude').val(position.coords.latitude);
+						$('#longitude').val(position.coords.longitude);
+						alert("Lokasi berhasil diambil: " + position.coords.latitude + ", " + position.coords.longitude);
+					},
+					function(error) {
+						let message = "";
+						switch (error.code) {
+							case error.PERMISSION_DENIED:
+								message = "Izin lokasi ditolak. Aktifkan izin GPS di browser.";
+								break;
+							case error.POSITION_UNAVAILABLE:
+								message = "Informasi lokasi tidak tersedia.";
+								break;
+							case error.TIMEOUT:
+								message = "Waktu permintaan lokasi habis.";
+								break;
+							default:
+								message = "Terjadi kesalahan tidak diketahui.";
+								break;
+						}
+						alert("Gagal mendapatkan lokasi: " + message);
+						console.error("Geolocation error:", error);
+					}
+				);
+			} else {
+				alert("Browser kamu tidak mendukung fitur lokasi.");
+			}
+
 			if (typeof toastData !== 'undefined') {
 				toastr.options = {
 					"closeButton": true,

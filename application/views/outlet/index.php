@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0"><?= $section_title ?></h5>
-            <a href="<?= base_url('outlet/create') ?>" class="btn btn-primary btn-sm">Tambah Outlet</a>
+            <a href="<?= base_url('outlet/create') ?>" class="btn btn-primary btn-sm lift">Tambah Outlet</a>
         </div>
         <div class="card-body">
             <?php if ($this->session->flashdata('success')) : ?>
@@ -34,8 +34,8 @@
                             <td><?= $outlet->longitude ?></td>
                             <td><?= indonesianDate($outlet->created_at, 'full') ?></td>
                             <td>
-                                <a href="<?= base_url('outlet/update/' . $outlet->id) ?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="<?= base_url('outlet/delete/' . $outlet->id) ?>" onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger btn-sm">Hapus</a>
+                                <a href="<?= base_url('outlet/update/' . $outlet->id) ?>" class="btn btn-warning btn-sm lift">Edit</a>
+                                <a href="<?= base_url('outlet/delete/' . $outlet->id) ?>" onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger btn-sm lift">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
