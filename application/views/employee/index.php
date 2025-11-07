@@ -1,23 +1,19 @@
-<div class="row align-items-center">
-    <div class="border-0 mb-4">
-        <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-            <h3 class="fw-bold mb-0"><?= $page_title ?></h3>
-            <div class="col-auto d-flex w-sm-100">
-                <a type="button" class="btn light-success-bg btn-sm" data-bs-toggle="modal" data-bs-target="#importKaryawanModal"> <i class="icofont-file-excel me-2 fs-6"></i>Import Excel</a> &nbsp;
-                <a href="karyawan/form/create" type="button" class="btn btn-dark btn-sm"><i class="icofont-plus-circle me-2 fs-6"></i>Tambah Karyawan</a>
-            </div>
-        </div>
-    </div>
-</div> <!-- Row end  -->
-<div class="row clearfix g-3">
+<div class="container mt-3">
+    <?= generate_breadcrumb() ?>
     <div class="col-sm-12">
         <div class="card mb-3">
-
-            <?= generate_breadcrumb(); ?>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0"><?= $page_title ?></h5>
+                <div class="col-auto d-flex w-sm-100">
+                    <a type="button" class="btn light-success-bg btn-sm" data-bs-toggle="modal" data-bs-target="#importKaryawanModal"> <i class="icofont-file-excel me-2 fs-6"></i>Import Excel</a> &nbsp;
+                    <a href="karyawan/form/create" type="button" class="btn btn-dark btn-sm"><i class="icofont-plus-circle me-2 fs-6"></i>Tambah Karyawan</a>
+                </div>
+            </div>
             <div class="card-body">
                 <table id="employeeTable" class="table table-hover align-middle mb-0" style="width:100%">
                     <thead>
                         <tr>
+                            <th>NIP</th>
                             <th>Nama</th>
                             <th>Jabatan (Divisi)</th>
                             <th>Unit</th>
@@ -30,6 +26,9 @@
                         foreach ($employees as $employee) {
                         ?>
                             <tr>
+                                <td>
+                                    <?= $employee->nip ?>
+                                </td>
                                 <td>
                                     <span class="fw-bold ms-1"> <a href="<?= base_url('karyawan/' . $employee->id) ?>"><?= $employee->name ?></a></span>
                                 </td>

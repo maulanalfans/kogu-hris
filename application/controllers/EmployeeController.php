@@ -30,24 +30,25 @@ class EmployeeController extends CI_Controller
 		check_logged_in();
 		$this->load->model('Employee_model');
 		$this->load->model('User_model');
+		check_role(['superadmin', 'manager_outlet']);
 	}
 
 	public function index()
 	{
-		$this->load->view('dashboard/layouts/index', [
+		$this->load->view('layouts/index', [
 			'page_title' => 'Daftar Karyawan',
 			'section_title' => 'Daftar Karyawan',
-			'content' => 'dashboard/employee/index',
+			'content' => 'employee/index',
 			'employees' => $this->Employee_model->get_all_employee()
 		]);
 	}
 
 	function form_create()
 	{
-		$this->load->view('dashboard/layouts/index', [
+		$this->load->view('layouts/index', [
 			'page_title' => 'Tambah Karyawan',
 			'section_title' => 'Tambah Karyawan Baru',
-			'content' => 'dashboard/employee/create',
+			'content' => 'employee/create',
 			'statuses' => $this->db->get('status_types')->result(),
 			'units' => $this->db->get('units')->result(),
 			'positions' => $this->db->get('positions')->result(),
@@ -154,10 +155,10 @@ class EmployeeController extends CI_Controller
 		if (!$employee) {
 			show_404();
 		}
-		$this->load->view('dashboard/layouts/index', [
+		$this->load->view('layouts/index', [
 			'page_title' => 'Detail Karyawan',
 			'section_title' => $employee->name,
-			'content' => 'dashboard/employee/view',
+			'content' => 'employee/view',
 			'employee_data' => $employee,
 		]);
 	}
@@ -183,10 +184,10 @@ class EmployeeController extends CI_Controller
 
 		if ($this->form_validation->run() === FALSE) {
 
-			$this->load->view('dashboard/layouts/index', [
+			$this->load->view('layouts/index', [
 				'page_title' => 'Edit Data Karyawan',
 				'section_title' => 'Edit Data Karyawan',
-				'content' => 'dashboard/employee/edit',
+				'content' => 'employee/edit',
 				'employee' => $employee,
 				'employee_roles' => $employee_roles,
 				'statuses' => $this->db->get('status_types')->result(),

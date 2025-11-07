@@ -61,10 +61,10 @@ if (!function_exists('check_role')) {
 		}
 
 		if (!in_array($user_role, $roles)) {
-			$CI->session->set_flashdata('error', [
+			$CI->session->set_flashdata('toastr', [
 				'type' => 'error',
 				'title' => 'Gagal',
-				'message' => 'Anda tidak memiliki izin untuk mengakses halaman ini.'
+				'message' => 'Anda tidak memiliki izin untuk mengakses sebelumnya.'
 			]);
 			redirect('dashboard');
 			exit;

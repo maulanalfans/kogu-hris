@@ -23,63 +23,44 @@ if (!function_exists('menuAttributes')) {
 		$CI = &get_instance();
 		$role = $CI->session->userdata('role_id');
 
-		if ($role == '1') {
+		if (!empty($role)) {
 			$menu = array(
 				array(
 					'menu' => 'Dashboard',
 					'icon' => 'icofont-ui-home',
 					'url' => 'dashboard',
+					'role' => [1, 2, 3, 4]
 				),
 				array(
 					'menu' => 'Karyawan',
 					'icon' => 'icofont-people',
 					'url' => '#',
+					'role' => [1, 3],
 					'has_child' => TRUE,
 					'childMenu' => array(
 						array(
 							'pos' => 1,
 							'childMenu' => "Kelola Karyawan",
-							'url' => 'karyawan'
+							'url' => 'karyawan',
+							'role' => [1, 3]
 						), array(
 							'pos' => 2,
 							'childMenu' => "Gaji Karyawan",
-							'url' => '#'
+							'url' => '#',
+							'role' => [1]
 						), array(
 							'pos' => 3,
 							'childMenu' => "Laporan Karyawan",
-							'url' => '#'
+							'url' => '#',
+							'role' => [1]
 						)
 					)
 				),
 				array(
 					'menu' => 'Kelola Outlet',
 					'icon' => 'icofont-building',
-					'url' => '#',
-				),
-			);
-		} else if ($role == '2') {
-			$menu = array(
-				array(
-					'menu' => 'Dashboard',
-					'icon' => 'icofont-ui-home',
-					'url' => '#',
-				),
-				array(
-					'menu' => 'Karyawan',
-					'icon' => 'icofont-people',
-					'url' => '#',
-					'has_child' => TRUE,
-					'childMenu' => array(
-						array(
-							'pos' => 1,
-							'childMenu' => "Kelola Karyawan",
-							'url' => '#'
-						),
-					)
-				), array(
-					'menu' => 'Kelola Outlet',
-					'icon' => 'icofont-building',
-					'url' => '#',
+					'url' => 'outlet',
+					'role' => [1, 3]
 				),
 			);
 		}
@@ -190,9 +171,6 @@ if (!function_exists('generate_breadcrumb')) {
 		return $breadcrumb;
 	}
 }
-
-
-// ------------------------------------------------------------------------
 
 /* End of file Site_helper.php */
 /* Location: ./application/helpers/Site_helper.php */

@@ -30,7 +30,7 @@ class DashboardController extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('dashboard/layouts/index', [
+		$this->load->view('layouts/index', [
 			'page_title' => 'Dashboard',
 			'section_title' => 'Dashboard',
 			'current_user' => (object) current_user(),

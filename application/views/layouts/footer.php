@@ -6,7 +6,7 @@
 <script>
     $(document).ready(function() {
 
-        $('#employeeTable').addClass('nowrap').dataTable({
+        $('table').addClass('nowrap').dataTable({
             responsive: true,
             columnDefs: [{
                 targets: [-1, -3],
