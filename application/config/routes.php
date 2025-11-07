@@ -62,5 +62,10 @@ $route['karyawan/(:num)'] = 'EmployeeController/view/$1';
 $route['karyawan/update/(:num)'] = 'EmployeeController/update/$1';
 $route['karyawan/delete/(:num)'] = 'EmployeeController/delete/$1';
 
+$route['outlet'] = 'OutletController/index';
+$route['outlet/create'] = 'OutletController/create';
+$route['outlet/update/(:num)'] = 'OutletController/update/$1';
+$route['outlet/delete/(:num)'] = 'OutletController/delete/$1';
+
 $route['login'] = 'LoginController/index';
 $route['logout'] = 'LoginController/logout';
